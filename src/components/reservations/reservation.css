@@ -1,0 +1,11 @@
+.page-container > h2 {
+    display: flex;
+    justify-content: center;
+    padding: 2rem;
+}
+
+.form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
