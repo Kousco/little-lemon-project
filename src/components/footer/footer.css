@@ -1,12 +1,12 @@
 footer {
-    background-color: #333;
+    background-color: #495e57;
     color: #edefee;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 10px;
-    width: 100vw;
-
+    padding: 1rem;
+    flex-flow: wrap;
+    row-gap: 1rem;
 }
 
 footer nav {
