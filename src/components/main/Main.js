@@ -1,30 +1,92 @@
-import React from 'react'
-import { Route, Routes } from 'react-router-dom'
-import BookingPage from '../reservations/BookingPage'
-import Chicago from './chicago/Chicago'
-import Homepage from './homepage/Homepage'
-import "./main.css"
-import { useState } from 'react'
+import React, {useReducer, useEffect} from 'react';
+import { Route, Routes, useNavigate } from 'react-router-dom';
+import BookingPage from '../reservations/BookingPage';
+import {fetchAPI, submitAPI} from './availabilityApi';
+import ConfirmedBooking from '../reservations/ConfirmedBooking';
+import Home from '../main/home/Home'
+import PageInProgress from './PageInProgress'
+import OurStory from './home/ourStory/OurStory';
+
+//below code for the bookingForm API
+const initialAvailableTimes = [];
+
+const availableTimesReducer = (state, action) => {
+  switch (action.type) {
+    case 'UPDATE_TIMES':
+      return action.times; // Update the state with the new available times
+    default:
+      return state;
+  }
+};
 
 const Main = () => {
-  const [availableTimes, setAvailableTimes] = useState([
-    "17:00",
-    "18:00",
-    "19:00",
-    "20:00",
-    "21:00",
-    "22:00"
-  ]);
+  const [availableTimes, dispatch] = useReducer(
+    availableTimesReducer,
+    initialAvailableTimes
+  );
+
+  const updateTimes = async (date) => {
+    if (date !== '') {
+      const times = await fetchAPI(date);
+      dispatch({ type: 'UPDATE_TIMES', times });
+    }
+  };
+
+  useEffect(() => {
+    // Initialize available times with today's date
+    const today = new Date();
+    updateTimes(today);
+  }, []);
+
+  //below is code for the bookingForm submission
+  const navigate = useNavigate();
+
+  const submitForm = async (formData) => {
+    const response = await submitAPI(formData);
+    if (response) navigate('/confirmed-booking');
+  }
 
   return (
     <div>
       <Routes>
-        <Route path='/' element={<Homepage />} />
-        <Route path='/about' element={<Chicago />} />
-        <Route path='/reservations'element={<BookingPage/>} availableTimes={availableTimes} setAvailableTimes={setAvailableTimes} />
+        <Route
+          path='/'
+          element={<Home />}
+        />
+        <Route
+          path='/reservations'
+          element={<BookingPage
+            updateTimes={updateTimes}
+            availableTimes={availableTimes}
+            dispatch={dispatch}
+            submitForm={submitForm}
+          />}
+        />
+        <Route
+          path='/confirmed-booking'
+          element={<ConfirmedBooking />}
+        />
+        <Route
+          path='/menu'
+          element={<PageInProgress />}
+         />
+         <Route
+          path='/order-online'
+          element={<PageInProgress />}
+         />
+         <Route
+          path='/login'
+          element={<PageInProgress />}
+         />
+         <Route
+          path='/about'
+          element={<OurStory />}
+         />
       </Routes>
     </div>
-  )
-}
+  );
+};
 
-export default Main
+
+
+export default Main;

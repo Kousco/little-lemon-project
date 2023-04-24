@@ -10,12 +10,20 @@ hr {
     justify-content: center;
 }
 
-.nav-container ul li {
+.nav-container li {
     margin: 1rem 20px 1rem 20px;
 }
 
-.nav-container ul li a {
+.nav-container a {
     color: #333;
+}
+
+.nav-container a:hover, .hamburger-icon:hover {
+    color: #ee9972;
+}
+
+.nav-container a:active, .hamburger-icon:active {
+    color: #fbdabb;
 }
 
 .header-logo{
@@ -28,5 +36,34 @@ hr {
     display: flex;
     min-width: 150px;
     max-width: 200px;
+}
+
+.hamburger-icon-box {
+    display: flex;
+    justify-content: center;
+    padding: 1rem;
+}
+
+.hamburger-icon {
+    font-size: 2rem;
+}
+
+@media screen and (max-width: 550px) {
+    .nav-menu {
+        display: flex;
+        flex-direction: column;
+        margin-top: 10px;
+    }
+
+    .nav-item {
+        font-size: 24px;
+        margin-bottom: 10px;
+    }
+}
+
+@media screen and (min-width: 550px) {
+    .hamburger-icon {
+        display: none;
+    }
 }
 

@@ -4,6 +4,7 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
+import ScrollToTop from './ScrollToTop';
 
 <>
   <meta name='description' content='We are a family owned Mediterranean restaurant, focused on traditional recipes served with a modern twist' />
@@ -16,6 +17,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
+    <ScrollToTop />
       <App />
     </BrowserRouter>
   </React.StrictMode>

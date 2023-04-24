@@ -1,0 +1,51 @@
+.meal-container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background-color: #edefee;
+    width: 20rem;
+    border-radius: 1rem;
+    margin: 1rem;
+    padding: 1rem;
+}
+
+.meal-header {
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.meal-footer {
+    margin: 1rem auto;
+}
+
+.meal-image img {
+    margin-bottom: 1rem;
+    width: 18rem;
+    height: 20rem;
+    border-radius: 1rem;
+    object-fit: cover;
+}
+
+.meal-delivery {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    color: #333;
+}
+
+.online-order {
+    color: #333;
+    font-weight: bold;
+    margin-right: 5px;
+}
+
+.online-order:hover {
+    color: #ee9972;
+}
+
+.online-order:active {
+    color: #fbdabb;
+}

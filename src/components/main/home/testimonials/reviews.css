@@ -1,0 +1,19 @@
+.reviews-container {
+    background-color: #495e57;
+    padding-bottom: 4rem;
+    padding-top: 1rem;
+}
+
+.review-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.review-title h2 {
+    text-align: center;
+    color: #edefee;
+    line-height: .8;
+    margin-top: .5rem;
+    margin-bottom: .5rem;
+}

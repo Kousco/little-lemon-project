@@ -1,0 +1,35 @@
+.review-card-container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background-color: #edefee;
+    width: 20rem;
+    height: 20rem;
+    border-radius: 1rem;
+    margin: 1rem;
+    padding: 1rem;
+}
+
+.user-header {
+    display: inline-flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 15rem;
+    margin: auto;
+}
+
+.user-header img {
+    width: 6rem;
+    border-radius: 1rem;
+    object-fit: cover;
+    border: solid #333;
+}
+
+.user-rating {
+    color: #333;
+    margin: auto;
+}
+
+.user-review {
+    margin: auto;
+}
